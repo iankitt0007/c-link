@@ -1,0 +1,10 @@
+fastapi
+supabase
+python-dotenv
+python-multipart
+uvicorn
+bcrypt
+sqlalchemy
+psycopg2-binary
+pyjwt
+pydantic[email]
