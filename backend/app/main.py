@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes.auth import router as auth_router
+from app.routes.admin import router as admin_router
 
-# Create FastAPI app with better configuration
 app = FastAPI(
     title="Supabase Auth API",
     description="Authentication API using Supabase with role-based access control",
@@ -11,7 +11,6 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Configure CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Configure this properly for production
@@ -20,8 +19,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
+app.include_router(admin_router, prefix="/auth", tags=["Admin Management"])
 
 @app.get("/")
 async def root():
